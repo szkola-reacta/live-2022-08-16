@@ -11,7 +11,7 @@ function App() {
   return (
     <div className="App">
       <ErrorBoundary>
-        <UserProvider>
+        <UserProvider value={null}>
           <Hello />
           <Ping />
         </UserProvider>
