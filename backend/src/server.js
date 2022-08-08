@@ -79,6 +79,16 @@ app.post('/login', (req, res) => {
   }
 });
 
+app.post('/favorites', (req, res) => {
+  // TODO: read token from headers
+  const data = req.body;
+  const token = data.token;
+
+  const decoded = jwt.verify(token, SECRET);
+
+  res.status(200).json(decoded);
+});
+
 // app.post('/json', (req, res) => {
 //   res.status(200).json({
 //     serverResponse: true,
