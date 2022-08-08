@@ -37,6 +37,21 @@ app.post('/command', (req, res) => {
   });
 });
 
+app.get('/movies', (_req, res) => {
+
+  // 0. zmienne środowiskowe https://www.npmjs.com/package/dotenv
+  // 1. request do firebase/airtable (axios lub https://www.npmjs.com/package/whatwg-fetch lub https://www.npmjs.com/package/node-fetch)
+  // 2. odebranie danych
+  // 3. wstawienie danych do odpowiedzi
+
+  res
+  .json({
+    status: 'ok',
+    message: 'hello!'
+  });
+});
+
+
 // app.post('/json', (req, res) => {
 //   res.status(200).json({
 //     serverResponse: true,

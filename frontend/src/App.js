@@ -4,6 +4,7 @@ import './App.css';
 // import { Hello } from './Hello';
 import { Hello } from './components/HelloFn';
 import { Ping } from './components/Ping';
+import { LoginForm } from './components/LoginForm';
 import { ErrorBoundary } from './components/ErrorBoundary';
 import { Provider as UserProvider } from './UserContext';
 
@@ -12,8 +13,9 @@ function App() {
     <div className="App">
       <ErrorBoundary>
         <UserProvider value={null}>
-          <Hello />
-          <Ping />
+          {/* <Hello /> */}
+          <LoginForm />
+          {/* <Ping /> */}
         </UserProvider>
       </ErrorBoundary>
     </div>
