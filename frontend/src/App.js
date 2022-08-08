@@ -1,5 +1,6 @@
 
 import './App.css';
+import { useState } from 'react';
 
 // import { Hello } from './Hello';
 import { Hello } from './components/HelloFn';
@@ -9,10 +10,20 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 import { Provider as UserProvider } from './UserContext';
 
 function App() {
+  const [user, setUser] = useState({ email: '' });
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+  const defaultUserValues = {
+    isAuthenticated,
+    setIsAuthenticated,
+    user,
+    setUser,
+  }
+
   return (
     <div className="App">
       <ErrorBoundary>
-        <UserProvider value={null}>
+        <UserProvider value={defaultUserValues}>
           {/* <Hello /> */}
           <LoginForm />
           {/* <Ping /> */}

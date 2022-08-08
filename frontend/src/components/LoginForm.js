@@ -12,14 +12,18 @@ function LoginForm() {
       headers: {
         'Content-type': 'application/json',
       },
-      body: JSON.stringify({ user: user })
+      // body: JSON.stringify({ user: user })
+      body: JSON.stringify({ ...user })
     })
     .then(response => response.json())
     .then(data => console.log(data));
   }
 
   const handleChange = (event) => {
-    setUser({ [event.target.name]: event.target.value });
+    setUser({
+      ...user,
+      [event.target.name]: event.target.value
+    });
   }
 
   return (

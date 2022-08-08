@@ -1,6 +1,11 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+
+// TODO: move to env vars
+const SECRET = 'sdfsdfsB%^&%^&BMBFGG%^&%';
+
 const app = express();
 
 // const PORT = process.env.PORT || 8080;
@@ -51,6 +56,28 @@ app.get('/movies', (_req, res) => {
   });
 });
 
+app.post('/login', (req, res) => {
+  const data = req.body;
+  console.log('data: ', data);
+  if (1 === 1) {
+    // udało się znaleźc uytkwnika w bazie
+
+    const token = jwt.sign({
+      data: {
+        email: data.email
+      },
+      exp: Math.floor(Date.now() / 1000) + (60 * 60),
+    }, SECRET);
+
+    res.status(200).json({
+      token: token,
+    });
+  } else {
+    res.status(401).json({
+      message: 'login failed'
+    });
+  }
+});
 
 // app.post('/json', (req, res) => {
 //   res.status(200).json({
