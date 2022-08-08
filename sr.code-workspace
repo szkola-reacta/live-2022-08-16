@@ -1,0 +1,53 @@
+{
+  "folders": [
+    {
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/.git": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "docker/": true,
+      "**/node_modules": true,
+      "**/coverage": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/dist": true
+    },
+
+    // eslint plugin settings -- required due to our nested tsconfig & custom rules
+    "eslint.alwaysShowStatus": true,
+    "eslint.lintTask.options": ". --ext .js",
+    "eslint.packageManager": "npm",
+    "eslint.validate": [
+      "javascript",
+      "javascriptreact",
+    ],
+    "eslint.workingDirectories": [
+      { "directory": "frontend", "changeProcessCWD": true },
+      { "directory": "backend", "changeProcessCWD": true },
+    ],
+    // recommended to enable auto-fixes to solve most linting issues:
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": false,
+      "source.fixAll.eslint": true
+    },
+    "cSpell.words": [
+      "Szkoła Reacta",
+    ],
+  },
+  "extensions": {
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "yzhang.markdown-all-in-one",
+        "davidanson.vscode-markdownlint",
+        "esbenp.prettier-vscode",
+        "bierner.markdown-mermaid",
+        "stylelint.vscode-stylelint"
+    ]
+}
+}
