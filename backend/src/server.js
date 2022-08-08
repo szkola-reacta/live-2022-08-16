@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-// const bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 const app = express();
 
 // const PORT = process.env.PORT || 8080;
@@ -11,7 +11,7 @@ const corsOptions = {
 }
 
 app.use(cors(corsOptions));
-// app.use(bodyParser.json());
+app.use(bodyParser.json());
 
 // http://localhost:8080/
 app.get('/', (_req, res) => {
@@ -27,6 +27,13 @@ app.get('/ping', (_req, res) => {
   .json({
     status: 'ok',
     message: 'hello!'
+  });
+});
+
+app.post('/command', (req, res) => {
+  res.json({
+    serverResponse: true,
+    data: req.body
   });
 });
 
