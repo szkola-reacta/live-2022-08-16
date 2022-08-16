@@ -2,6 +2,7 @@
 import { useEffect, useState, useRef, useReducer, useContext } from 'react';
 
 import { login } from '../services/auth';
+import { favorites } from '../services/user';
 
 // const LoginForm = () => {
 
@@ -56,7 +57,9 @@ function LoginForm() {
     });
   }
 
-  const handleClick = () => {
+  const handleClick = async () => {
+    // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7fSwiZXhwIjoxNjYwNjc4NzM4LCJpYXQiOjE2NjA2NzUxMzh9.tXBHQzMmsnbexYs68KxcMjuUrpVa1G19tFS1REhRwfE
+    await favorites('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7fSwiZXhwIjoxNjYwNjc4NzM4LCJpYXQiOjE2NjA2NzUxMzh9.tXBHQzMmsnbexYs68KxcMjuUrpVa1G19tFS1REhRwfE');
     console.log('Test!');
   }
 

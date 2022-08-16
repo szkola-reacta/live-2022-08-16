@@ -56,21 +56,30 @@ app.get('/movies', (_req, res) => {
   });
 });
 
+// access token - cookies
+// refresh token - local storage
 app.post('/login', (req, res) => {
   const data = req.body;
-  console.log('data: ', data);
+  console.log('login: data: ', data);
   if (1 === 1) {
     // udało się znaleźc uytkwnika w bazie
 
-    const token = jwt.sign({
+    const accessToken = jwt.sign({
       data: {
-        email: data.email
+        email: data.email,
       },
       exp: Math.floor(Date.now() / 1000) + (60 * 60),
+    }, SECRET)
+
+    const refreshToken = jwt.sign({
+      data: {
+        email: data.email,
+      }
     }, SECRET);
 
     res.status(200).json({
-      token: token,
+      accessToken,
+      refreshToken,
     });
   } else {
     res.status(401).json({
@@ -79,10 +88,14 @@ app.post('/login', (req, res) => {
   }
 });
 
+// protected
 app.post('/favorites', (req, res) => {
   // TODO: read token from headers
   const data = req.body;
+  console.log('data: ', data);
+
   const token = data.token;
+  console.log('token: ', token);
 
   const decoded = jwt.verify(token, SECRET);
 
