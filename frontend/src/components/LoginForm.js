@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef, useReducer, useContext } from 'react';
 
 import { login } from '../services/auth';
 
@@ -6,21 +7,25 @@ import { login } from '../services/auth';
 
 // }
 
+const Button = (props) => {
+  return <button onClick={props.handleClick}>{props.children}</button>
+}
+
 function LoginForm() {
   const [user, setUser] = useState({ email: '', password: '' });
 
   const validateEmail = () => {
     console.log('jestem w validateEmail');
-    if (user.email === '') {
-      alert('halo, uzupełnij uytkownika!');
-    }
+    // if (user.email === '') {
+    //   alert('halo, uzupełnij uytkownika!');
+    // }
   }
 
   const validatePassword = () => {
     console.log('jestem w validatePassword');
-    if (user.email === '') {
-      alert('halo, uzupełnij uytkownika!');
-    }
+    // if (user.email === '') {
+    //   alert('halo, uzupełnij uytkownika!');
+    // }
   }
 
   // useEffect(() => {
@@ -51,6 +56,10 @@ function LoginForm() {
     });
   }
 
+  const handleClick = () => {
+    console.log('Test!');
+  }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -63,9 +72,12 @@ function LoginForm() {
           <input type="password" name="password" onChange={handleChange} />
         </div>
         <div>
-          <input type="submit" value="Send" />
+          <input type="submit" value="Login" />
         </div>
       </form>
+
+      {/* <button onClick={}>Send</button> */}
+      <Button handleClick={handleClick}>Send</Button>
     </div>
   );
 }
