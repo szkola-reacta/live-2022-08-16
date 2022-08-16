@@ -1,10 +1,9 @@
-import axios from 'axios';
 
-import { API_BASE_URL } from './config';
+import { api } from './config';
 
 export const favorites = async () => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/favorites`);
+    const response = await api.post('/favorites');
 
     return response.data;
   } catch {

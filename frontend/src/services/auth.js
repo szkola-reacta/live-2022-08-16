@@ -1,10 +1,8 @@
-import axios from 'axios';
-
-const API_BASE_URL = 'http://localhost:8080';
+import { api } from './config';
 
 export const login = async (user) => {
   try {
-    const response = await axios.post(`${API_BASE_URL}/login`, user);
+    const response = await api.post('/login', user);
 
     return response.data;
   } catch {
