@@ -1,22 +1,17 @@
 import { useState } from 'react';
 
+import { login } from '../services/auth';
+
 function LoginForm() {
   const [user, setUser] = useState({ email: '', password: '' });
 
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    fetch('http://localhost:8080/login', {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      // body: JSON.stringify({ user: user })
-      body: JSON.stringify({ ...user })
-    })
-    .then(response => response.json())
-    .then(data => console.log(data));
+    const data = await login(user);
+
+    console.log('data: ', data);
   }
 
   const handleChange = (event) => {
