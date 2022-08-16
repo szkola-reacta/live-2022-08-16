@@ -69,7 +69,7 @@ app.post('/login', (req, res) => {
         email: data.email,
       },
       exp: Math.floor(Date.now() / 1000) + (60 * 60),
-    }, SECRET)
+    }, SECRET);
 
     const refreshToken = jwt.sign({
       data: {
@@ -100,6 +100,33 @@ app.post('/favorites', (req, res) => {
   const decoded = jwt.verify(token, SECRET);
 
   res.status(200).json(decoded);
+});
+
+// protected
+app.post('/refresh', (req, res) => {
+  // TODO: read token from headers
+  const data = req.body;
+  const token = data.token;
+
+  const decoded = jwt.verify(token, SECRET);
+
+  const accessToken = jwt.sign({
+    data: {
+      email: data.email,
+    },
+    exp: Math.floor(Date.now() / 1000) + (60 * 60),
+  }, SECRET);
+
+  const refreshToken = jwt.sign({
+    data: {
+      email: data.email,
+    }
+  }, SECRET);
+
+  res.status(200).json({
+    accessToken,
+    refreshToken,
+  });
 });
 
 // app.post('/json', (req, res) => {

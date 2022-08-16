@@ -59,7 +59,7 @@ function LoginForm() {
 
   const handleClick = async () => {
     // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7fSwiZXhwIjoxNjYwNjc4NzM4LCJpYXQiOjE2NjA2NzUxMzh9.tXBHQzMmsnbexYs68KxcMjuUrpVa1G19tFS1REhRwfE
-    await favorites('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7fSwiZXhwIjoxNjYwNjc4NzM4LCJpYXQiOjE2NjA2NzUxMzh9.tXBHQzMmsnbexYs68KxcMjuUrpVa1G19tFS1REhRwfE');
+    await favorites();
     console.log('Test!');
   }
 

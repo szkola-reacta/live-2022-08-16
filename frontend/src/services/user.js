@@ -1,13 +1,19 @@
+import Cookies from 'js-cookie'
 
 import { api } from './config';
 
-export const favorites = async (token) => {
+export const favorites = async () => {
   try {
-    const response = await api.post('/favorites', { "costam": 'sdfsdf' }); // { token: 'value' } 
+    const token = Cookies.get('accessToken');
+    const response = await api.post('/favorites', { token }); // { token: 'value' } 
+
+    // axios interceptors
 
     return response.data;
   } catch {
     // log to Sentry
 
+    await api.post('/refresh');
+    
   }
 }
