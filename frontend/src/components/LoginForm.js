@@ -1,9 +1,39 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { login } from '../services/auth';
 
+// const LoginForm = () => {
+
+// }
+
 function LoginForm() {
   const [user, setUser] = useState({ email: '', password: '' });
+
+  const validateEmail = () => {
+    console.log('jestem w validateEmail');
+    if (user.email === '') {
+      alert('halo, uzupełnij uytkownika!');
+    }
+  }
+
+  const validatePassword = () => {
+    console.log('jestem w validatePassword');
+    if (user.email === '') {
+      alert('halo, uzupełnij uytkownika!');
+    }
+  }
+
+  // useEffect(() => {
+  //   validate();
+  // }, [user.email, user.password]);
+
+  useEffect(() => {
+    validateEmail();
+  }, [user.email]);
+
+  useEffect(() => {
+    validatePassword();
+  }, [user.password]);
 
 
   const handleSubmit = async (event) => {
